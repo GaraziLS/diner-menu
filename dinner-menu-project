@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinner menu</title>
+</head>
+<body>
+
+</div>
+
+</body>
+<script>
+// Have the Main Menu and a Sides Menu
+// You get one entree and two side choices at regular cost.
+// - show them the entire menu (print out)
+// - A user selects an entree.
+// - “Waitress” makes a comment based on their selection
+// - comment can either be a comparison of the two items, or random comment pulled from a comment vault.
+// - Tell them the price
+// - repeat the above options for side choices (comment and a price)
+// - total up the cost
+
+// BONUS
+// Have breakfast, lunch, and dinner menu. Breakfast has different items, lunch and dinner have the same items but are different prices.
+
+// BONUS: Allow for item customization (how items are prepared, decide additional cost implications)
+
+// Menu type
+
+MenuType = {
+    first: "Breakfast",
+    second: "Lunch",
+    third: "Dinner"
+}
+// Main menu
+
+mainMenu = {
+    first: "steak",
+    second: "fish",
+    third: "pasta"
+}
+mainMenuPrice = 20
+
+// Side Menu
+
+sideMenu = {
+    first: "fries",
+    second: "sauce",
+    third: "bread"
+}
+
+sideMenuPrice = 10
+
+// Breakfast Menu
+
+BFastMenu = {
+    first: "coffee",
+    second: "tea",
+    third: "hot cocoa"
+}
+
+BFastMenuPrice = 15
+
+
+
+// Lunch Menu
+
+LunchMenu = {
+    first: "salad",
+    second: "chicken",
+    third: "fish"
+}
+
+LunchMenuPrice = {
+    first: 15,
+    second: 5,
+    third: 20
+}
+
+// Dinner Menu
+
+DinnerMenu = {
+    first: "salad",
+    second: "chicken",
+    third: "fish"
+}
+
+DinnerMenuPrice = {
+    first: 15,
+    second: 10,
+    third: 5
+}
+
+// Custom items
+
+CustomSalad = {
+    first: "vegetal",
+    second: "pasta"
+}
+
+CustomSaladPrice = 2
+
+CustomMeatAndFish = {
+    first: "almost raw",
+    second: "Fifty-fifty",
+    third: "overcooked"
+}
+
+CustomMeatAndFishPrice = 5
+
+// comment selector
+
+let commentList = ["Excellent choice", "Of course. Please, wait a bit", "I'd recommend other dish instead", "We're out of that dish"]
+function comment(){
+    return commentList[Math.floor(Math.random() * commentList.length)]
+}
+
+// prompt to choose the hour & display the correct menu + choosing a dish based on time
+
+let currentTime = prompt("What time is it?", "Enter a 24 hour format (enter a number between 1 and 24)")
+
+NumcurrentTime = parseInt(currentTime)
+
+// menu display based on time
+
+if  (NumcurrentTime < 1 && NumcurrentTime >= 25) {
+        throw Error("The day isn't that short/long!")
+
+} else if (NumcurrentTime >= 7 && NumcurrentTime <= 11) {
+    alert(`"Our breakfast menu has ${BFastMenu.first}, ${BFastMenu.second} or ${BFastMenu.third} and it has a price of ${BFastMenuPrice}"`)
+    
+    // dish chooser
+    let BFastChoice = prompt("Choose a breakfast dish")
+        if (BFastChoice == BFastMenu.first || BFastChoice == BFastMenu.second || BFastChoice == BFastMenu.third) {
+    alert(`"Good choice. You chose ${BFastChoice}. ${comment()}"`)
+    console.log(BFastChoice) } else {
+        throw Error("Choose a valid dish")
+        
+        // else if to switch menu types
+    }} else if (NumcurrentTime >= 12 && NumcurrentTime <= 15) {
+    alert(`"Our lunch menu has ${LunchMenu.first}, ${LunchMenu.second} or ${LunchMenu.third} and it has a price of ${LunchMenuPrice.first} for ${LunchMenu.first}, a price of ${LunchMenuPrice.second} for ${LunchMenu.second} and ${LunchMenuPrice.third} for ${LunchMenu.third}"`) 
+    
+    let LunchChoice = prompt("Choose a lunch dish")
+        if (LunchChoice == LunchMenu.first || LunchChoice == LunchMenu.second || LunchChoice == LunchMenu.third) {
+        alert(`"Good choice. You chose ${LunchChoice}. ${comment()}"`)
+        alert(LunchChoice) } else {
+        throw Error("Choose a valid dish")
+    }} 
+
+    else if (NumcurrentTime >= 16 && NumcurrentTime <= 22) {
+    alert(`"Our dinner menu has ${DinnerMenu.first}, ${DinnerMenu.second} or ${DinnerMenu.third} and has a price of ${DinnerMenuPrice.first} for ${DinnerMenu.first}, a price of ${DinnerMenuPrice.second} for ${DinnerMenu.second} and ${DinnerMenuPrice.third} for ${DinnerMenu.third}"`)
+
+    let DinnerChoice = prompt("Choose a dinner dish")
+        if (DinnerChoice == DinnerMenu.first || DinnerChoice == DinnerMenu.second || DinnerChoice == DinnerMenu.third) {
+        alert(`"Good choice. You chose ${DinnerChoice}. ${comment()}"`)
+    alert(DinnerChoice) } else {
+        throw Error("Choose a valid dish")}
+
+    } else if (NumcurrentTime >= 1 && NumcurrentTime <= 23) {
+    alert(`"We have a regular menu now. Please, choose a main dish and two sides. Our regular menu has ${mainMenu.first}, ${mainMenu.second} or ${mainMenu.third} and has a price of ${mainMenuPrice}.  The sides menu has ${sideMenu.first}, ${sideMenu.second} or ${sideMenu.third} and has a price of ${sideMenuPrice}"`)
+
+    let MainChoice = prompt("Choose a main dish")
+        if (MainChoice == mainMenu.first || MainChoice == mainMenu.second || MainChoice == mainMenu.third) {
+        alert(`"Good choice. You chose ${MainChoice}. ${comment()}"`)
+    alert(MainChoice) } else {
+        throw Error("Choose a valid dish")}
+    
+    let SideChoice = prompt("Choose a side dish")
+    if (SideChoice == sideMenu.first || SideChoice == sideMenu.second || SideChoice == sideMenu.third) {
+    alert(`"Good choice. You chose ${SideChoice}. ${comment()}"`)
+    alert(SideChoice) } else {
+        throw Error("Choose a valid dish")}
+
+    let SecondSideChoice = prompt("Choose another side dish")
+    if (SecondSideChoice == sideMenu.first || SecondSideChoice == sideMenu.second || SecondSideChoice == sideMenu.third) {
+    alert(`"Good choice. You chose ${SecondSideChoice}. ${comment()}"`)
+    alert(SecondSideChoice) } else {
+        throw Error("Choose a valid dish")
+    }}
+
+    // custom item selection
+
+    if (LunchChoice == LunchMenu.first || DinnerChoice == DinnerMenu.first) {
+        alert(`"You chose salad. You can customize yor dish with ${CustomSalad.first} or ${CustomSalad.second}. They have an extra charge of ${CustomSaladPrice}"`)
+        let customSaladSelection = prompt("Choose a custom item")
+        if (customSaladSelection == CustomSalad.first || customSaladSelection == CustomSalad.second){
+        alert(`"You chose ${customSaladSelection}"`)}}
+
+    if (MainChoice == MainMenu.first || LunchChoice == LunchMenu.second || LunchChoice == LunchMenu.third ||DinnerChoice == DinnerMenu.second || DinnerChoice == DinnerMenu.second) {
+        alert(`"You chose meat or fish. You can customize yor dish with ${CustomMeatAndFish.first} or ${CustomMeatAndFish.second} or ${CustomMeatAndFish.third}. They have an extra charge of ${CustomMeatAndFishPrice}"`)
+        let customMeatFishSelection = prompt("Choose a custom item")
+        if (customSaladSelection == CustomSalad.first || customSaladSelection == CustomSalad.second){
+        alert(`"You chose ${customMeatFishSelection}"`) 
+    }}
+    
+    
+
+
+    
+    // price calculator
+function totalPrice() {
+    if (MainChoice == true || SideChoice == true || SecondSideChoice == true ) {
+        alert(`"Total cost: ${mainMenuPrice} + ${sideMenuPrice} + ${sideMenuPrice}"`)
+    } else if (BFastChoice == true) {
+        alert(`"Total cost: ${BFastMenuPrice}"`)
+    } else if (LunchChoice == LunchMenu.first && customSaladSelection == true) {
+        alert(`"Total cost: ${LunchMenuPrice.first} + ${CustomSaladPrice}"`)
+    } else if (LunchChoice == LunchMenu.second && customMeatFishSelection == true) {
+        alert(`"Total cost: ${LunchMenuPrice.second} + ${CustomMeatAndFishPrice}"`)
+    } else if (DinnerChoice == DinnerMenu.first && customSaladSelection == true) {
+        alert(`"Total cost: ${DinnerMenuPrice.first} + ${CustomSaladPrice}"`)
+    } else if (DinnerChoice == DinnerMenu.second && customMeatFishSelection == true) {
+        alert(`"Total cost: ${DinnerMenuPrice.second} + ${CustomMeatAndFishPrice}"`)}
+    }
+
+
+</script>
+</html>
